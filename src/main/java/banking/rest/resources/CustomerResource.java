@@ -1,13 +1,6 @@
 package banking.rest.resources;
 
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +9,7 @@ import banking.dao.CustomerDao;
 import banking.dao.mapimpl.CustomerDaoMapImpl;
 import banking.model.Customer;
 
-@Path("customers")
+//LABTASK: Use appropriate Path to map this resource
 public class CustomerResource {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
@@ -27,42 +20,45 @@ public class CustomerResource {
 	
 	private CustomerDao dao = new CustomerDaoMapImpl();
 
-	@GET
+	// LABTASK: Use appropriate Path and methods for this task
 	public Response getCustomers() {
-		return Response.ok(dao.findCustomers()).build();
+		// LABTASK: Use dao to find all customers
+		// LABTASK: Build appropriate response and return back
+		return null;
 	}
 
-	@GET
-	@Path("{id}")
-	public Response getCustomer(@PathParam("id") Integer id) {
-		Customer customer = dao.findCustomerById(id);
-		if ( customer == null ) return Response.status(Status.NOT_FOUND).build();
-		return Response.ok(dao.findCustomerById(id)).build();
+	// LABTASK: Use appropriate Path and methods for this task
+	// LABTASK: Insert @PathParam so you can inject appropriate id from the path
+	public Response getCustomer(Integer id) {
+		// LABTASK: use dao to find customer
+		// LABTASK: Throw an exception if the customer was not found, return approrpirate response NOT_FOUND
+		// LABTASK: Build appropriate response and return back
+		return null;
 	}
 	
-	@POST
+	// LABTASK: Use appropriate Path and methods for this task
 	public Response saveCustomer(Customer customer) {
-		LOGGER.info("Customer to save: " + customer);
-		Customer saved = dao.saveCustomer(customer);
-		return Response.ok(saved).build();
+		// LABTASK: use dao to save customer
+		// LABTASK: Build appropriate response and return back
+		return null;
 	}
 
-	@PUT
-	@Path("{id}")
-	public Response updateCustomer(@PathParam("id") Integer id, Customer customer) {
-		customer.setId(id);
-		LOGGER.info("Customer to update: " + customer);
-		Customer updated = dao.updateCustomer(customer);
-		return Response.ok(updated).build();
+	// LABTASK: Use appropriate Path and methods for this task
+	// LABTASK: Insert @PathParam so you can inject appropriate id from the path
+	public Response updateCustomer(Integer id, Customer customer) {
+		// LABTASK: set the customer id from the path
+		// LABTASK: use dao to update the customer
+		// LABTASK: Build appropriate response and return back
+		return null;
 	}
 	
-	@DELETE
-	@Path("{id}")
-	public Response deleteCustomer(@PathParam("id") Integer id) {
-		Customer customer = new Customer(id,null,null);
-		LOGGER.info("Customer to delete: " + customer);
-		Customer deleted = dao.deleteCustomer(customer);
-		return Response.ok(deleted).build();
+	// LABTASK: Use appropriate Path and methods for this task
+	// LABTASK: Insert @PathParam so you can inject appropriate id from the path
+	public Response deleteCustomer(Integer id) {
+		// LABTASK: create empty customer with id
+		// LABTASK: use dao to delete customer with id
+		// LABTASK: Build appropriate response and return back
+		return null;
 	}
 	
 }

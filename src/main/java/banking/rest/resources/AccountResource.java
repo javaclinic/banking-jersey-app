@@ -1,19 +1,14 @@
 package banking.rest.resources;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import banking.dao.AccountDao;
 import banking.dao.mapimpl.AccountDaoMapImpl;
-import banking.model.Account;
 
-@Path("accounts")
+// LABTASK: Use appropriate Path to map this resource
 public class AccountResource {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
@@ -24,17 +19,20 @@ public class AccountResource {
 	
 	private AccountDao dao = new AccountDaoMapImpl();
 	
-	@GET
-	public Response getAccount() {
-		return Response.ok(dao.findAccounts()).build();
+	// LABTASK: Use appropriate Path and methods for this task
+	public Response getAccounts() {
+		// LABTASK: Use dao to find all accounts
+		// LABTASK: Build appropriate response and return back
+		return null;
 	}
 
-	@GET
-	@Path("{id}")
-	public Response getAccount(@PathParam("id") Integer id) {
-		Account account = dao.findAccountById(id);
-		if ( account == null ) return Response.status(Status.NOT_FOUND).build();
-		return Response.ok(dao.findAccountById(id)).build();
+	// LABTASK: Use appropriate Path and methods for this task
+	// LABTASK: Insert @PathParam so you can inject appropriate id from the path
+	public Response getAccount(Integer id) {
+		// LABTASK: Get an account from dao
+		// LABTASK: Throw an exception if the account was not found, return approrpirate response NOT_FOUND
+		// LABTASK: Build appropriate response and return back
+		return null;
 	}
 
 }
