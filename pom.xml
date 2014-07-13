@@ -15,6 +15,7 @@
 	<url>http://localhost:8080/banking-jersey-app</url>
   
   	<properties>
+  		<java.ee.servlet.version>3.1.0</java.ee.servlet.version>
 		<spring.version>4.0.6.RELEASE</spring.version>
 		<joda-time.version>2.2</joda-time.version>
 		<jax-rs.version>2.0</jax-rs.version>
@@ -26,6 +27,13 @@
   
 	<dependencies>
 		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${java.ee.servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet</artifactId>

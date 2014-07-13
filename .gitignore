@@ -8,3 +8,4 @@ target/
 *.ear
 
 .gitignore~
+.DS_Store
