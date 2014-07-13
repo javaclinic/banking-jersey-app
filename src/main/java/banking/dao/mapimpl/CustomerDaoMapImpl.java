@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import banking.dao.CustomerDao;
+import banking.model.Account;
 import banking.model.Customer;
 
 public class CustomerDaoMapImpl implements CustomerDao {
@@ -45,6 +46,12 @@ public class CustomerDaoMapImpl implements CustomerDao {
 	public Collection<Customer> findCustomers() {
 		LOGGER.info("Finding all customers.");
 		return BankingDatabaseMapImpl.findAllCustomers();
+	}
+	
+	@Override
+	public Collection<Account> findAccounts(Customer customer) {
+		LOGGER.info("Finding all accounts owned by customer");
+		return BankingDatabaseMapImpl.findAccountByCustomer(customer);
 	}
 
 }

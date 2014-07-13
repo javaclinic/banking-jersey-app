@@ -2,6 +2,7 @@ package banking.dao;
 
 import java.util.Collection;
 
+import banking.model.Account;
 import banking.model.Customer;
 
 public interface CustomerDao {
@@ -12,5 +13,6 @@ public interface CustomerDao {
 
 	Customer findCustomerById(Integer id);
 	Collection<Customer> findCustomers();
+	Collection<Account> findAccounts(Customer customer);
 		
 }

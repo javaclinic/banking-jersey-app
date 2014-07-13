@@ -44,6 +44,14 @@ public class BankingDatabaseMapImpl {
 		}
 		return result;
 	}
+	public static Collection<Account> findAccountByCustomer(Customer customer) {
+		Collection<Account> result = new ArrayList<>();
+		for ( Map.Entry<Integer,Account> entry : accounts.entrySet() ) {
+			Account account = entry.getValue();
+			if ( customer.equals(account.getOwner())) result.add(account);
+		}
+		return result;
+	}
 	
 	// GET ENTRY BY ID
 	public static Customer findCustomerById(Integer id) {
@@ -90,6 +98,8 @@ public class BankingDatabaseMapImpl {
 		if ( account == null ) throw new RuntimeException("Account cannot be null!");
 		Account found = accounts.get(account.getId());
 		if ( found == null ) throw new RuntimeException("Account not found: " + account);
+		Customer owner = found.getOwner();
+		if ( owner != null ) account.setOwner(customers.get(owner.getId()));
 		accounts.put(account.getId(), account);
 		return account;
 	}
@@ -105,6 +115,8 @@ public class BankingDatabaseMapImpl {
 	public synchronized static Account saveAccount(Account account) {
 		if ( account == null ) throw new RuntimeException("Account cannot be null!");
 		if ( account.getId() != null ) throw new RuntimeException("Account id needs to be null, database generates keys dynamically.");
+		Customer owner = account.getOwner();
+		if ( owner != null ) account.setOwner(customers.get(owner.getId()));
 		account.setId(accountKeys.incrementAndGet());
 		accounts.put(account.getId(), account);
 		return account;
